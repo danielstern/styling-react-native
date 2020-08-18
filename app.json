@@ -1,9 +1,9 @@
 {
-  "name": "demo1",
-  "displayName": "demo1",
+  "name": "Globoticket - Get Tickets to Great Events",
+  "displayName": "Globoticket - Get Tickets to Great Events",
   "expo": {
-    "name": "demo1",
-    "slug": "demo1",
+    "name": "globoticket-demo1",
+    "slug": "globoticket-demo1",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"

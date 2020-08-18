@@ -8,10 +8,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-navigation/native": "^5.7.3",
+    "@react-navigation/stack": "^5.9.0",
     "expo": "~38.0.9",
     "expo-splash-screen": "^0.5.0",
     "expo-status-bar": "^1.0.0",
     "expo-updates": "~0.2.10",
+    "nanoid": "^3.1.12",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "react-native": "~0.62.2",
