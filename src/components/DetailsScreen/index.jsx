@@ -20,13 +20,13 @@ export const DetailsScreen = ({route})=>{
                     {date.toLocaleDateString("en-us", {day: "numeric", weekday: "long", month: "long", year:"numeric"})}
 
                 </h2> 
-                {/* <p>
+                <p>
 
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget tellus fringilla, tempus magna ut, accumsan lectus. 
                     Sed pellentesque, mi non tempor auctor, nisl sem cursus sem, sed ultricies augue metus non ex. 
                     Morbi venenatis suscipit nunc vel facilisis. Sed sit amet dictum mauris, quis blandit velit. 
 
-                </p> */}
+                </p>
 
             </Text>
 
