@@ -40,7 +40,8 @@ export const HomeScreen = ({navigation})=>{
 const styles = StyleSheet.create({
     container:{
         backgroundColor: "white",
-        height: "100%"
+        height: "100%",
+        maxWidth: 900
     },
     tab:{
         flex: 1, 

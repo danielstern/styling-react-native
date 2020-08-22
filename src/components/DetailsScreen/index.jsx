@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native';
 
 export const DetailsScreen = ({route})=>{
 
@@ -7,7 +7,7 @@ export const DetailsScreen = ({route})=>{
 
     return (
 
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
   
             <Text>
 
@@ -32,7 +32,7 @@ export const DetailsScreen = ({route})=>{
 
             <Button title="Purchase Tickets"></Button>
 
-        </View>
+        </ScrollView>
     )
 
 }
