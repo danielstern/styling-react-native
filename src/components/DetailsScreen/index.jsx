@@ -30,7 +30,7 @@ export const DetailsScreen = ({route})=>{
 
             </Text>
 
-            <Button title="Purchase Tickets"></Button>
+            <Button title="Purchase Tickets" onPress={()=>{}}></Button>
 
         </ScrollView>
     )

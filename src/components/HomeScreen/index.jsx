@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor: "white",
         height: "100%",
-        maxWidth: 900
+        // maxWidth: 900
     },
     tab:{
         flex: 1, 
