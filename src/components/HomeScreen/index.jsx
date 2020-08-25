@@ -1,16 +1,33 @@
-import React from 'react';
+// import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import 'react-native-gesture-handler';
 import { ScrollView } from 'react-native-gesture-handler';
-import { StyleSheet, Text, View, SectionList } from 'react-native';
+import { StyleSheet, Text, View, SectionList, Animated } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native'
 
 import { defaultState } from '../../config';
 import { ConcertListItem } from './ConcertListItem';
-import { Logo } from '../Logo';
+
+
 
 export const HomeScreen = ({navigation})=>{
 
+  // this logic regarding the screens fading in probably does not belong with the actual app JSX... requires refactor?
+    const fadeAnim = useRef(new Animated.Value(0)).current;
+
+    useFocusEffect(() => {
+        Animated.timing(
+          fadeAnim,
+          {
+            toValue: 1,
+            duration: 350,
+          }
+        ).start();
+      }, [fadeAnim]);
+
     return (
-      <View style={styles.container}>
+        <Animated.View style={{opacity: fadeAnim}} >
+            <View style={styles.container}>
 
           <ScrollView style={{alignSelf: "stretch", height: "40%"}}>
 
@@ -32,6 +49,7 @@ export const HomeScreen = ({navigation})=>{
 
           </Text>
         </View>
+        </Animated.View>
 	)
 	
   }
