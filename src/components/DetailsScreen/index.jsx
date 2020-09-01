@@ -1,9 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native';
 
+import { useFocusEffect } from '@react-navigation/native'
+
 export const DetailsScreen = ({route})=>{
 
     const { name, date } = route.params.item;
+
+    useFocusEffect(() => {
+
+        console.log("Details screen focused");
+          
+    });
 
     return (
 

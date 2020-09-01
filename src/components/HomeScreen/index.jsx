@@ -1,8 +1,6 @@
-// import React from 'react';
-import React, { useRef, useEffect } from 'react';
-import 'react-native-gesture-handler';
+import React, { useRef } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-import { StyleSheet, Text, View, SectionList, Animated } from 'react-native';
+import { StyleSheet, Text, View, SectionList, Animated, LayoutAnimation } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native'
 
 import { defaultState } from '../../config';
@@ -10,45 +8,89 @@ import { ConcertListItem } from './ConcertListItem';
 
 
 
+// TODO:
+// - replace animated with LayoutAnimation
+// - animate slide out... but how?
+// https://reactnative.dev/docs/layoutanimation
 export const HomeScreen = ({navigation})=>{
 
-  // this logic regarding the screens fading in probably does not belong with the actual app JSX... requires refactor?
-    const fadeAnim = useRef(new Animated.Value(0)).current;
-
+	const fadeAnim = useRef(new Animated.Value(0)).current;
+	const slideAnim = useRef(new Animated.Value(0)).current;
+	
     useFocusEffect(() => {
-        Animated.timing(
-          fadeAnim,
-          {
-            toValue: 1,
-            duration: 350,
-          }
-        ).start();
-      }, [fadeAnim]);
+
+      Animated.timing(
+        fadeAnim,
+        {
+          toValue: 1,
+          duration: 350,
+        }
+
+	  ).start();
+
+	  Animated.timing(
+        slideAnim,
+        {
+          toValue: 0,
+          duration: 350,
+        }
+	  ).start();
+	  
+	  return function(){
+
+		console.log("unfocusing");
+
+		Animated.timing(
+			slideAnim,
+			{
+			  toValue: 500,
+			  duration: 350,
+			}
+		  ).start();
+
+		
+
+		Animated.timing(
+			fadeAnim,
+			{
+			  toValue: 0,
+			  duration: 0,
+			}
+		  ).start();
+
+	  }
+      
+	}, [fadeAnim]);
+	
+	// Troubleshooting: Scrolling does not seem to work with any height value measured in %
+	// solution: every parent View must have height 100%
 
     return (
-        <Animated.View style={{opacity: fadeAnim}} >
+        <Animated.View style={{opacity: fadeAnim, marginLeft: slideAnim, height: "100%"}} >
             <View style={styles.container}>
 
-          <ScrollView style={{alignSelf: "stretch", height: "40%"}}>
+				<ScrollView style={{height: 100}}>
 
-            <SectionList
-                sections={defaultState} 
-            	renderItem={ ({item}) => <ConcertListItem item={item} navigation={navigation}/> }
-            	renderSectionHeader={({section}) => (
-              		<Text style={styles.sectionHeader}>
-                		{section.title}
-              		</Text>
-            	)
-          	}/>
+                	<SectionList
+	                    sections={defaultState} 
+						          renderItem={ ({item}) => <ConcertListItem item={item} navigation={navigation}/> }
+                  		renderSectionHeader={({section}) => (
+                      		<Text style={styles.sectionHeader}>
+                        		{section.title}
+                      		</Text>
+						  )
+						  
+                	}/>
 
-          </ScrollView>
-  
-          <Text style={styles.footer}>
+            	</ScrollView>
+      
+				<Text style={styles.footer}>
 
-            (C)2020 Globoticket
+              		(C)2020 Globoticket
 
-          </Text>
-        </View>
+        		</Text>
+
+        	</View>
         </Animated.View>
 	)
 	
@@ -57,7 +99,8 @@ export const HomeScreen = ({navigation})=>{
   
 const styles = StyleSheet.create({
     container:{
-        backgroundColor: "white",
+		backgroundColor: "white",
+		// height: 200,
         height: "100%",
         // maxWidth: 900
     },
