@@ -1,0 +1,16 @@
+{
+    "files.exclude": {
+        "node_modules/": true,
+        ".expo/": true,
+        "ios/": true,
+        "android/": true,
+        "__tests__/": true,
+        "web-build/": true,
+        ".gitattributes": true,
+        ".buckconfig": true,
+        "*.config.js": true,
+        "*-lock.json": true,
+        "*.lock": true
+        
+    }
+}
