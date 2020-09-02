@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Image, Dimensions } from 'react-native';
 
-const img = require('../../img/logo.png');
-
 export const Logo = () => (
-    <Image source={img} style={getLogoStyle()} resizeMode="contain"/>
+
+    <Image source={require('../../img/logo.png')} style={getLogoStyle()} resizeMode="contain"/>
+
 )
 
 const getLogoStyle = () => {

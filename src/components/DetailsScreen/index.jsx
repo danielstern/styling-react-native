@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native';
 
+import { StyleSheet, Text, Image, Button, ScrollView } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native'
 
 export const DetailsScreen = ({route})=>{
@@ -19,9 +19,11 @@ export const DetailsScreen = ({route})=>{
   
             <Text>
 
-                <Image source={require('./../../img/img-3.jpg')} style={{height: 200, width: "100%"}}/>
-                <h1 style={{marginBottom: 10}}>
+                <Image source={require('./../../img/img-3.jpg')} style={styles.image}/>
+                <h1 style={styles.h1}>
+
                     {name}
+
                 </h1>
                 <h2>
 
@@ -38,7 +40,7 @@ export const DetailsScreen = ({route})=>{
 
             </Text>
 
-            <Button title="Purchase Tickets" onPress={()=>{}}></Button>
+            <Button title="Purchase Tickets" onPress={()=>{ console.info("Handle Button Press;" )}}></Button>
 
         </ScrollView>
     )
@@ -48,6 +50,18 @@ export const DetailsScreen = ({route})=>{
 
 const styles = StyleSheet.create({
 
+    h1: {
+
+        marginBottom: 10
+
+    },
+    image: {
+        // todo... use flex values 
+
+        height: 200, 
+        width: "100%"
+
+    },
     container: {
 
         backgroundColor: "white",
@@ -62,4 +76,5 @@ const styles = StyleSheet.create({
         backgroundColor: "steelblue", fontSize: 18, color: "white", textTransform:"uppercase", borderRadius: 4
 
     }
+
 })
