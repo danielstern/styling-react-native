@@ -1,27 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native';
+import { Text, Image, Button, ScrollView } from 'react-native';
 
-import { useFocusEffect } from '@react-navigation/native'
 
 export const DetailsScreen = ({route})=>{
 
     const { name, date } = route.params.item;
 
-    useFocusEffect(() => {
-
-        console.log("Details screen focused");
-          
-    });
-
     return (
 
-        <ScrollView style={styles.container}>
+        <ScrollView>
   
             <Text>
 
-                <Image source={require('./../../img/img-3.jpg')} style={{height: 200, width: "100%"}}/>
-                <h1 style={{marginBottom: 10}}>
+                <Image source={require('./../../img/img-3.jpg')} />
+               
+                <h1>
+
                     {name}
+
                 </h1>
                 <h2>
 
@@ -44,22 +40,3 @@ export const DetailsScreen = ({route})=>{
     )
 
 }
-  
-
-const styles = StyleSheet.create({
-
-    container: {
-
-        backgroundColor: "white",
-        height: "100%",
-        margin: 20,
-        padding: 20
-
-    },
-    button: {
-
-        padding: 10, 
-        backgroundColor: "steelblue", fontSize: 18, color: "white", textTransform:"uppercase", borderRadius: 4
-
-    }
-})
