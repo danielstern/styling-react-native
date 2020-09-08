@@ -1,123 +1,74 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-import { StyleSheet, Text, View, SectionList, Animated, LayoutAnimation } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native'
+import { StyleSheet, Text, View, SectionList } from 'react-native';
 
 import { defaultState } from '../../config';
 import { ConcertListItem } from './ConcertListItem';
 
-
-
-// TODO:
-// - replace animated with LayoutAnimation
-// - animate slide out... but how?
-// https://reactnative.dev/docs/layoutanimation
 export const HomeScreen = ({navigation})=>{
 
-	// const fadeAnim = useRef(new Animated.Value(0)).current;
-	// const slideAnim = useRef(new Animated.Value(0)).current;
-	
-  //   useFocusEffect(() => {
-
-  //     Animated.timing(
-  //       fadeAnim,
-  //       {
-  //         toValue: 1,
-  //         duration: 350,
-  //       }
-
-	//   ).start();
-
-	//   Animated.timing(
-  //       slideAnim,
-  //       {
-  //         toValue: 0,
-  //         duration: 350,
-  //       }
-	//   ).start();
-	  
-	//   return function(){
-
-	// 	console.log("unfocusing");
-
-	// 	Animated.timing(
-	// 		slideAnim,
-	// 		{
-	// 		  toValue: 500,
-	// 		  duration: 350,
-	// 		}
-	// 	  ).start();
-
-		
-
-	// 	Animated.timing(
-	// 		fadeAnim,
-	// 		{
-	// 		  toValue: 0,
-	// 		  duration: 0,
-	// 		}
-	// 	  ).start();
-
-	//   }
-      
-	// }, [fadeAnim]);
-	
-	// Troubleshooting: Scrolling does not seem to work with any height value measured in %
-	// solution: every parent View must have height 100%
-
     return (
-            <View style={styles.container}>
+        <View style={styles.container}>
 
-				<ScrollView style={{height: 100}}>
+			<ScrollView>
 
-                	<SectionList
-	                    sections={defaultState} 
-						          renderItem={ ({item}) => <ConcertListItem item={item} navigation={navigation}/> }
-                  		renderSectionHeader={({section}) => (
-                      		<Text style={styles.sectionHeader}>
-                        		{section.title}
-                      		</Text>
-						  )
-						  
-                	}/>
+				<SectionList
 
-            	</ScrollView>
+					sections={defaultState} 
+					renderItem={ ({item}) => (
+					
+						<ConcertListItem item={item} navigation={navigation}/> 
+
+					)}
+					renderSectionHeader={({section}) => (
+
+						<Text style={styles.sectionHeader}>
+
+							{section.title}
+
+						</Text>
+
+					)
+							
+				}/>
+
+			</ScrollView>
       
-				<Text style={styles.footer}>
+			<Text style={styles.footer}>
 
-              		(C)2020 Globoticket
+				(C)2020 Globoticket
 
-        		</Text>
+			</Text>
 
-        	</View>
+		</View>
 	)
 	
-  }
+}
 
   
 const styles = StyleSheet.create({
     container:{
+
 		backgroundColor: "white",
-		// height: 200,
-        height: "100%",
-        // maxWidth: 900
-    },
+		height: 470,
+		
+	},
     tab:{
-        flex: 1, 
-        backgroundColor: "steelblue", 
-        justifyContent:"center", 
-        alignItems:"center"
+
+		backgroundColor: "steelblue", 
+		
     },
     footer: {
+
         textAlign: "center",
         borderTopColor: "lightgray",
         borderTopWidth: StyleSheet.hairlineWidth,
         margin: 4,
-        fontSize: 10,
-        // backgroundColor: 
-
+		fontSize: 10,
+		
     },
     sectionHeader: {
+
         paddingTop: 2,
         paddingLeft: 10,
         paddingRight: 10,
@@ -125,13 +76,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         backgroundColor: 'rgba(247,247,247,1.0)',
         borderBottomColor: "lightgray",
-        borderBottomWidth: StyleSheet.hairlineWidth
-    },
-    concertList:{
-        alignSelf: "stretch" // this has the same effect as width: 100 but is more correct for mobile
-    },
+		borderBottomWidth: StyleSheet.hairlineWidth
+		
+	},
+	
     itemDate:{
-        flex: 1,
-        backgroundColor: 'blue'
+
+		backgroundColor: 'blue'
+		
     }
 });

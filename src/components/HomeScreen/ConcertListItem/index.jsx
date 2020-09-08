@@ -1,39 +1,12 @@
 import React from 'react';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { StyleSheet, Text, View } from 'react-native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-const RenderLikeButton = (progress, dragX)=>{
-
-    const x = progress.interpolate({
-        inputRange: [0, 2],
-        outputRange: [0, 40],
-      });
-
-    //   console.log(x.toJSON(), progress.toJSON())
-
-    console.log(progress.toJSON(), dragX.toJSON());
-
-    console.log(x.toJSON())
-
-    return (
-        <View style={{width: x.toJSON() + 10 + "%"}}>
-            <View style={styles.tab}>
-                <Text style={styles.tabText}>
-                LIKE
-                </Text> 
-            </View> 
-        </View>
-    )
-
-}
 export const ConcertListItem = ({navigation, item}) => {
     
     return (
-
-    // <Swipeable renderRightActions={RenderLikeButton}>
       
-        <TouchableHighlight  activeOpacity={0.6}underlayColor="#DDDDDD" onPress={()=> navigation.push("Details", {item})}>
+        <TouchableHighlight  activeOpacity={0.6} underlayColor="#DDDDDD" onPress={()=> navigation.push("Details", {item})}>
 
             <View style={styles.item}>
 
@@ -68,29 +41,38 @@ export const ConcertListItem = ({navigation, item}) => {
 
 const styles = StyleSheet.create({
     tab:{
-        flex: 1, 
+
+        width: 68,
         backgroundColor: "steelblue", 
-        justifyContent:"center", 
-        alignItems:"center"
+        padding: 12,
+        position: "absolute",
+        left: 0
+
     },
     tabText: {
+
         color: "white", 
         fontSize: 14, 
-        whiteSpace: "nowrap"
+        whiteSpace: "nowrap",
+
     },
+
     tabCenter: {
-        flex: 4, 
-        justifyContent:"center", 
-        alignItems:"center",
+
+        width: 272,
+        padding: 12,
+        position: "absolute",
+        right: 0
+
     },
     item: {
+
         padding: 10,
         height: 44,
-        alignSelf: 'stretch',
-        flex: 1,
-        flexDirection: 'row',
         padding: 0,
         borderBottomColor: "lightgray",
         borderBottomWidth: StyleSheet.hairlineWidth
+        
     }
+    
 });

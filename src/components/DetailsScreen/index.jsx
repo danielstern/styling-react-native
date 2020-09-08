@@ -1,24 +1,10 @@
 import React from 'react';
 
 import { StyleSheet, Text, Image, Button, ScrollView } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native'
-
-
 
 export const DetailsScreen = ({route})=>{
 
     const { name, date } = route.params.item;
-
-    useFocusEffect(() => {
-
-        console.log("Details screen focused");
-          
-    });
-
-    // console.log(a.b);
-
-    //  Problem... for some reason stlyeSheet.create just does not work sometimes
-    // Solution.... style created by "stylesheet.create" only works with components importeted from React native... not regular div tags!
 
     return (
 
@@ -48,7 +34,7 @@ export const DetailsScreen = ({route})=>{
 
             </Text>
 
-            <Button title="Purchase Tickets" onPress={()=>{ console.info("Handle Button Press;" )}}></Button>
+            <Button title="Purchase Tickets"></Button>
 
         </ScrollView>
     )
@@ -58,21 +44,16 @@ export const DetailsScreen = ({route})=>{
   
 const stylesFlex = StyleSheet.create({
 
-    header: {
-
-        // marginBottom: 10
-
-    },
     image: {
 
         height: 200, 
-        width: "100%"
+        width: 280
 
     },
     container: {
 
         backgroundColor: "white",
-        height: "100%",
+        height: 480,
         margin: 20,
         padding: 20
 
@@ -80,10 +61,12 @@ const stylesFlex = StyleSheet.create({
     button: {
 
         padding: 10, 
-        backgroundColor: "steelblue", fontSize: 18, color: "white", textTransform:"uppercase", borderRadius: 4
+        backgroundColor: "steelblue", 
+        fontSize: 18, 
+        color: "white", 
+        textTransform:"uppercase", 
+        borderRadius: 4
 
     }
-
-
 
 })

@@ -9,12 +9,9 @@ export const Logo = () => (
 
 const getLogoStyle = () => {
 
-    const { height } = Dimensions.get('window');
-
     return {
   
-        height: height / 6,
-        alignSelf: "stretch", 
+        height: 110,
         borderBottomColor: "lightgray",
         borderBottomWidth: StyleSheet.hairlineWidth
   
