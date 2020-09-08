@@ -33,11 +33,11 @@ export const ConcertListItem = ({navigation, item}) => {
 
     // <Swipeable renderRightActions={RenderLikeButton}>
       
-      <TouchableHighlight  activeOpacity={0.6}underlayColor="#DDDDDD" onPress={()=> navigation.navigate("Details", {item})}>
+        <TouchableHighlight  activeOpacity={0.6}underlayColor="#DDDDDD" onPress={()=> navigation.push("Details", {item})}>
 
-              <View style={styles.item}>
+            <View style={styles.item}>
 
-                    <View style={styles.tab}>
+                <View style={styles.tab}>
                     
                     <Text style={styles.tabText}>
 
@@ -57,9 +57,9 @@ export const ConcertListItem = ({navigation, item}) => {
 
                 </View>
                 
-              </View>
+			</View>
 
-            </TouchableHighlight>
+		</TouchableHighlight>
 
     )
 

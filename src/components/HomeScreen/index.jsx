@@ -14,59 +14,58 @@ import { ConcertListItem } from './ConcertListItem';
 // https://reactnative.dev/docs/layoutanimation
 export const HomeScreen = ({navigation})=>{
 
-	const fadeAnim = useRef(new Animated.Value(0)).current;
-	const slideAnim = useRef(new Animated.Value(0)).current;
+	// const fadeAnim = useRef(new Animated.Value(0)).current;
+	// const slideAnim = useRef(new Animated.Value(0)).current;
 	
-    useFocusEffect(() => {
+  //   useFocusEffect(() => {
 
-      Animated.timing(
-        fadeAnim,
-        {
-          toValue: 1,
-          duration: 350,
-        }
+  //     Animated.timing(
+  //       fadeAnim,
+  //       {
+  //         toValue: 1,
+  //         duration: 350,
+  //       }
 
-	  ).start();
+	//   ).start();
 
-	  Animated.timing(
-        slideAnim,
-        {
-          toValue: 0,
-          duration: 350,
-        }
-	  ).start();
+	//   Animated.timing(
+  //       slideAnim,
+  //       {
+  //         toValue: 0,
+  //         duration: 350,
+  //       }
+	//   ).start();
 	  
-	  return function(){
+	//   return function(){
 
-		console.log("unfocusing");
+	// 	console.log("unfocusing");
 
-		Animated.timing(
-			slideAnim,
-			{
-			  toValue: 500,
-			  duration: 350,
-			}
-		  ).start();
+	// 	Animated.timing(
+	// 		slideAnim,
+	// 		{
+	// 		  toValue: 500,
+	// 		  duration: 350,
+	// 		}
+	// 	  ).start();
 
 		
 
-		Animated.timing(
-			fadeAnim,
-			{
-			  toValue: 0,
-			  duration: 0,
-			}
-		  ).start();
+	// 	Animated.timing(
+	// 		fadeAnim,
+	// 		{
+	// 		  toValue: 0,
+	// 		  duration: 0,
+	// 		}
+	// 	  ).start();
 
-	  }
+	//   }
       
-	}, [fadeAnim]);
+	// }, [fadeAnim]);
 	
 	// Troubleshooting: Scrolling does not seem to work with any height value measured in %
 	// solution: every parent View must have height 100%
 
     return (
-        <Animated.View style={{opacity: fadeAnim, marginLeft: slideAnim, height: "100%"}} >
             <View style={styles.container}>
 
 				<ScrollView style={{height: 100}}>
@@ -91,7 +90,6 @@ export const HomeScreen = ({navigation})=>{
         		</Text>
 
         	</View>
-        </Animated.View>
 	)
 	
   }
