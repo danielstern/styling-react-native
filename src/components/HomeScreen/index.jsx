@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Text, View, SectionList, } from 'react-native';
+import { Text, View, SectionList, StyleSheet } from 'react-native';
 
 import { defaultState } from '../../config';
 import { ConcertListItem } from './ConcertListItem';
@@ -9,7 +9,7 @@ import { ConcertListItem } from './ConcertListItem';
 export const HomeScreen = ({navigation})=>{
 
     return (
-        <View>
+        <View style={styles.container}>
 
 				  <ScrollView>
 
@@ -22,7 +22,7 @@ export const HomeScreen = ({navigation})=>{
 						)}
                   		renderSectionHeader={({section}) => (
 
-                      		<Text>
+                      		<Text style={styles.sectionHeader}>
                         		{section.title}
                       		</Text>
 
@@ -40,3 +40,26 @@ export const HomeScreen = ({navigation})=>{
 	)
 	
 }
+
+const styles = StyleSheet.create({
+
+	container: {
+
+		backgroundColor: "white",
+		height: 470
+
+	},
+
+	sectionHeader: {
+
+		paddingTop: 2,
+		paddingLeft: 10,
+		paddingRight: 10,
+		paddingBottom: 2,
+		fontWeight: "bold",
+		backgroundColor: 'rgba(247, 247, 247)',
+		borderBottomColor: "steelblue",
+		borderBottomWidth: StyleSheet.hairlineWidth
+	}
+
+})
