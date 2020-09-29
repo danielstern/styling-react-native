@@ -5,6 +5,7 @@ import { useFocusEffect } from '@react-navigation/native'
 
 import { defaultState } from '../../config';
 import { ConcertListItem } from './ConcertListItem';
+import { CarouselHeader, CarouselListItem } from './CarouselListItem';
 
 
 
@@ -25,23 +26,7 @@ export const HomeScreen = ({navigation})=>{
 
                                 if (item.isCarousel) {
 
-                                    return (
-                                        <ScrollView horizontal={true} style={styles.carouselContainer}>
-
-                                            {
-                                                item.contents.map((content,i) => (
-                                                    <View key={i} style={styles.carouselItem}>
-
-                                                        <Text style={styles.carouselText}>{content.title}</Text>
-                                                        <Image source={require(`./../../img/${content.img}`)} style={styles.carouselImage} resizeMode="contain"/>
-
-                                                    </View>
-                                                ))
-                                                
-                                            }
-
-                                        </ScrollView>
-                                    )
+                                    return <CarouselListItem item={item} />
 
                                 } else {
 
@@ -53,14 +38,16 @@ export const HomeScreen = ({navigation})=>{
                             }}
                             renderSectionHeader={({section}) => {
 
+                                // return (<Text style={styles.sectionHeader}>
+
+                                //     {section.title}
+
+                                // </Text>)
+
                                 if (section.isCarousel) {
 
                                     return (
-                                        <View style={styles.carouselHeader}>
-                                            <Text>
-                                                {section.title}
-                                            </Text>
-                                        </View>
+                                        <CarouselHeader title={section.title} />
                                     )
 
                                 } else {
@@ -98,36 +85,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "white",
         height: "100%",
     },
-    carouselHeader:{
-        padding: 10,
-        // fontWeight: 700
-    },
-    carouselItem: {
-        height: 100,
-        width: "50%",
-        backgroundColor: "darkslategray",
-        marginLeft: 10,
-        padding: 4,
-    },
-    carouselContainer:{
-
-        display: "flex",
-        height: 120,
-        flexDirection: "row"
-
-    },
-    carouselImage:{
-
-        height: "70%",
-        // width: "80%"
-
-    },
-    carouselText: {
-        color: "white",
-        marginBottom: 6,
-        textAlign: "center"
-
-    },
+  
     tab:{
         flex: 1, 
         backgroundColor: "steelblue", 
