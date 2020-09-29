@@ -39,6 +39,28 @@ export const defaultState = [
 		}]
 	},
 	{
+		isCarousel: true,
+		title: "Tailored to Your Interests",
+		data:[{
+			isCarousel: true,
+			contents:[{
+
+				title:"Patricia Piano",
+				img: "img-3.jpg"
+
+			}, {
+
+				title:"Martin Marimba",
+				img: "img-2.jpg"
+				
+			}, {
+
+				title: "Tiffany Timpani",
+				img: "img-1.jpg"
+			}]
+		}]
+	},
+	{
 		title: "May",
 		data: [{
 			key: "concert-6",

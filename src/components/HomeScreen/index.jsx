@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-import { StyleSheet, Text, View, SectionList, Animated, LayoutAnimation } from 'react-native';
+import { StyleSheet, Text, View, SectionList, Animated, LayoutAnimation, Image } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native'
 
 import { defaultState } from '../../config';
@@ -14,57 +14,6 @@ import { ConcertListItem } from './ConcertListItem';
 // https://reactnative.dev/docs/layoutanimation
 export const HomeScreen = ({navigation})=>{
 
-	// const fadeAnim = useRef(new Animated.Value(0)).current;
-	// const slideAnim = useRef(new Animated.Value(0)).current;
-	
-  //   useFocusEffect(() => {
-
-  //     Animated.timing(
-  //       fadeAnim,
-  //       {
-  //         toValue: 1,
-  //         duration: 350,
-  //       }
-
-	//   ).start();
-
-	//   Animated.timing(
-  //       slideAnim,
-  //       {
-  //         toValue: 0,
-  //         duration: 350,
-  //       }
-	//   ).start();
-	  
-	//   return function(){
-
-	// 	console.log("unfocusing");
-
-	// 	Animated.timing(
-	// 		slideAnim,
-	// 		{
-	// 		  toValue: 500,
-	// 		  duration: 350,
-	// 		}
-	// 	  ).start();
-
-		
-
-	// 	Animated.timing(
-	// 		fadeAnim,
-	// 		{
-	// 		  toValue: 0,
-	// 		  duration: 0,
-	// 		}
-	// 	  ).start();
-
-	//   }
-      
-	// }, [fadeAnim]);
-	
-	// Troubleshooting: Scrolling does not seem to work with any height value measured in %
-	// solution: every parent View must have height 100%
-
     return (
             <View style={styles.container}>
 
@@ -72,14 +21,63 @@ export const HomeScreen = ({navigation})=>{
 
                 	<SectionList
 	                    sections={defaultState} 
-						          renderItem={ ({item}) => <ConcertListItem item={item} navigation={navigation}/> }
-                  		renderSectionHeader={({section}) => (
-                      		<Text style={styles.sectionHeader}>
-                        		{section.title}
-                      		</Text>
-						  )
+                        renderItem={ ({item}) => {
+
+                                if (item.isCarousel) {
+
+                                    return (
+                                        <ScrollView horizontal={true} style={styles.carouselContainer}>
+
+                                            {
+                                                item.contents.map((content,i) => (
+                                                    <View key={i} style={styles.carouselItem}>
+
+                                                        <Text style={styles.carouselText}>{content.title}</Text>
+                                                        <Image source={require(`./../../img/${content.img}`)} style={styles.carouselImage} resizeMode="contain"/>
+
+                                                    </View>
+                                                ))
+                                                
+                                            }
+
+                                        </ScrollView>
+                                    )
+
+                                } else {
+
+                                    return <ConcertListItem item={item} navigation={navigation}/> 
+
+                                }
+                                
+                            
+                            }}
+                            renderSectionHeader={({section}) => {
+
+                                if (section.isCarousel) {
+
+                                    return (
+                                        <View style={styles.carouselHeader}>
+                                            <Text>
+                                                {section.title}
+                                            </Text>
+                                        </View>
+                                    )
+
+                                } else {
+
+                                    return <Text style={styles.sectionHeader}>
+
+                                        {section.title}
+
+                                    </Text>
+
+                                    
+
+                                }
+                            
+                            }
 						  
-                	}/>
+                	    }/>
 
             	</ScrollView>
       
@@ -98,9 +96,37 @@ export const HomeScreen = ({navigation})=>{
 const styles = StyleSheet.create({
     container:{
 		backgroundColor: "white",
-		// height: 200,
         height: "100%",
-        // maxWidth: 900
+    },
+    carouselHeader:{
+        padding: 10,
+        // fontWeight: 700
+    },
+    carouselItem: {
+        height: 100,
+        width: "50%",
+        backgroundColor: "darkslategray",
+        marginLeft: 10,
+        padding: 4,
+    },
+    carouselContainer:{
+
+        display: "flex",
+        height: 120,
+        flexDirection: "row"
+
+    },
+    carouselImage:{
+
+        height: "70%",
+        // width: "80%"
+
+    },
+    carouselText: {
+        color: "white",
+        marginBottom: 6,
+        textAlign: "center"
+
     },
     tab:{
         flex: 1, 
