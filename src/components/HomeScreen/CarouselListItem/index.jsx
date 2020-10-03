@@ -3,20 +3,28 @@ import { StyleSheet, Text, View, ScrollView, Image, ImageBackground } from 'reac
 
 export const CarouselListItem = ({item}) => {
 
+    let _styles = spacedStyles;
+
     return (
-        <ScrollView horizontal={true} style={styles.carouselContainer}>
+        <ScrollView horizontal={true} style={_styles.carouselContainer}>
+
+            <View style={_styles.carouselInner}>
+
+
 
             {
                 item.contents.map((content,i) => (
-                    <View key={i} style={styles.carouselItem}>
+                    <View key={i} style={_styles.carouselItem}>
 
-                        <Text style={styles.carouselText}>{content.title}</Text>
-                        <ImageBackground source={require(`./../../../img/${content.img}`)} style={styles.carouselImage} resizeMode="contain"/>
+                        <Text style={_styles.carouselText}>{content.title}</Text>
+                        <ImageBackground source={require(`./../../../img/${content.img}`)} style={_styles.carouselImage} resizeMode="contain"/>
 
                     </View>
                 ))
             
             }
+
+            </View>
 
         </ScrollView>
     )
@@ -33,7 +41,6 @@ export const CarouselHeader = ({title}) => {
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
 
@@ -62,12 +69,9 @@ const styles = StyleSheet.create({
     },
     carouselImage:{
 
-        // height: "90%",
         height: 120,
         flex: 1,
-        resizeMode: "cover"
-
-        // width: "80%"
+        // resizeMode: "cover"
 
     },
     carouselText: {
@@ -79,3 +83,29 @@ const styles = StyleSheet.create({
     }
  
 });
+
+const spacedStyles = {
+    ... styles,
+    ...StyleSheet.create({
+
+        carouselInner:{
+
+            // display: "flex",
+            flexDirection: "row",
+            // marginBottom: 10,
+            justifyContent: "space-evenly",
+            // justifyContent: "flex-end",
+            width: "200%"
+    
+        },
+
+        carouselItem: {
+            // height: 140,
+            width: "200",
+            backgroundColor: "darkslategray",
+            // marginLeft: 10,
+            // padding: 4,
+        }
+
+    })
+}
