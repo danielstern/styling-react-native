@@ -11,7 +11,7 @@ export const HomeScreen = ({navigation})=>{
     return (
         <View style={styles.container}>
 
-				  <ScrollView>
+				  <ScrollView style={styles.scrollContainer}>
 
                 	<SectionList
 	                    sections={defaultState} 
@@ -46,7 +46,14 @@ const styles = StyleSheet.create({
 	container: {
 
 		backgroundColor: "white",
-		height: 470
+		flex: 1,
+
+	},
+	scrollContainer: {
+
+		flex: 1,
+		flexDirection: "column",
+		// height: 500
 
 	},
 

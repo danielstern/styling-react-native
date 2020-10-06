@@ -6,27 +6,49 @@ const styles = StyleSheet.create({
 
 	item: {
 
-		// padding: 10,
-		height: 44,
 		borderBottomColor: "lightsteelblue",
-		borderBottomWidth: StyleSheet.hairlineWidth
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		flex: 1,
+		flexDirection: "row"
+
+		// padding: 10,
+		// height: 100,
+		// flex: 1,
+	},
+	itemContainer: {
+
+		/// seems to work with no styles at all?
+		// height: 44, // these elements need some kind of height - 
+		// flex: "stretch"
+		// flex: 1,
+		// alignSelf: "stretch"
+
 	},
 
 	tab: {
 
-		width: 68,
+		flex: 1,
 		backgroundColor: "black",
-		padding: 12,
-		position: "absolute",
-		left: 0
+		alignContent: "center",
+		justifyContent: "center"
+
+		// flexDirection:"column",
+		// padding: 24,
+		// justifyContent: "flex-end"
+		// height: 90,
+		// width: 68,
+		// position: "absolute",
+		// left: 0
 	},
 
 	tabCenter: {
-		
-		width: 272,
-		padding: 12,
-		position: "absolute",
-		right: 0
+
+		flex: 5,
+		padding: 12, // try different padding values, note effect on justification of other elements
+
+		// position: "absolute",
+		// right: 0
+		// width: 272,
 		
 	},
 
@@ -34,7 +56,9 @@ const styles = StyleSheet.create({
 
 		color: "white",
 		fontSize: 14,
-		whiteSpace: "nowrap"
+		whiteSpace: "nowrap",
+		alignSelf: "center",
+
 	}
 
 })
@@ -43,7 +67,7 @@ export const ConcertListItem = ({navigation, item}) => {
     
     return (
 
-      <TouchableHighlight onPress={()=> navigation.navigate("Details", {item})}>
+      <TouchableHighlight style={styles.itemContainer} onPress={()=> navigation.navigate("Details", {item})}>
 
 			<View style={styles.item}>
 

@@ -1,21 +1,43 @@
 import React from 'react';
-import { Text, Image, Button, ScrollView, StyleSheet } from 'react-native';
+import { Text, Image, Button, ScrollView, StyleSheet, View } from 'react-native';
 
 const styles = StyleSheet.create({
 
     image: {
 
-        height: 200,
-        width: 280
+        height: "12em",
+        display: "flex",
+        alignItems: "stretch",
+        // width: 90,
+        // alignSelf: "center"
 
     },
 
     container: {
 
         backgroundColor: "white",
-        height: 480,
         margin: 20,
-        padding: 20
+        padding: 20,
+        // alignContent: "center",
+        // justifyContent: "center"
+
+    },
+
+    imageThumb: {
+
+        width: 50,
+        height: 40,
+        display: "flex"
+    },
+
+    imageThumbContainer: {
+
+        marginTop: 20,
+        display: "flex",
+        flexDirection: "row", // arrranges elements left-to-right
+        flexWrap: "wrap",
+        // justifyContent: "space-around",
+        justifyContent: "center",
 
     }
 
@@ -26,13 +48,42 @@ export const DetailsScreen = ({route})=>{
 
     const { name, date } = route.params.item;
 
+    const [img1, img2, img3] = [
+
+        require('./../../img/img-1.jpg'),
+        require('./../../img/img-2.jpg'),
+        require('./../../img/img-3.jpg')
+
+    ]
+
     return (
 
-        <ScrollView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
+
+            <Image source={img1} style={styles.image}/>
+
+            <View style={styles.imageThumbContainer}>
+
+                <Image style={styles.imageThumb} source={img1}/>
+                <Image style={styles.imageThumb} source={img2}/>
+                <Image style={styles.imageThumb} source={img3}/>
+
+                <Image style={styles.imageThumb} source={img1}/>
+                <Image style={styles.imageThumb} source={img2}/>
+                <Image style={styles.imageThumb} source={img3}/>
+
+                <Image style={styles.imageThumb} source={img1}/>
+                <Image style={styles.imageThumb} source={img2}/>
+                <Image style={styles.imageThumb} source={img3}/>
+
+                <Image style={styles.imageThumb} source={img1}/>
+                <Image style={styles.imageThumb} source={img2}/>
+                <Image style={styles.imageThumb} source={img3}/>
+            </View>
   
             <Text>
 
-                <Image source={require('./../../img/img-3.jpg')} style={styles.image}/>
+
                
                 <h1>
 
