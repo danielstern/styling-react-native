@@ -51,8 +51,9 @@ const styles = StyleSheet.create({
 	},
 	scrollContainer: {
 
-		flex: 1,
-		flexDirection: "column",
+		// no need for any styles on scroll container - sizing is automatic
+		// flex: 1,
+		// flexDirection: "column",
 		// height: 500
 
 	},
