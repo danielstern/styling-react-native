@@ -9,26 +9,33 @@ import { ConcertListItem } from './ConcertListItem';
 export const HomeScreen = ({navigation})=>{
 
     return (
-        <View style={styles.container}>
+	<View style={styles.container}>
 
-				  <ScrollView>
+        <View style={styles.homeBody}>
 
-                	<SectionList
-	                    sections={defaultState} 
-						renderItem={({item}) => (
-						
-							<ConcertListItem item={item} navigation={navigation}/> 
-						
-						)}
-                  		renderSectionHeader={({section}) => (
+			<ScrollView>
 
-                      		<Text style={styles.sectionHeader}>
-                        		{section.title}
-                      		</Text>
+				<SectionList
+					sections={defaultState} 
+					renderItem={({item}) => (
+					
+						<ConcertListItem item={item} navigation={navigation}/> 
+					
+					)}
+					renderSectionHeader={({section}) => (
 
-						)}/>
+						<Text style={styles.sectionHeader}>
+							{section.title}
+						</Text>
 
-            	</ScrollView>
+					)}/>
+
+			</ScrollView>
+
+		</View>
+		<View style={styles.homeFooter}>
+
+		
       
 				<Text>
 
@@ -37,6 +44,10 @@ export const HomeScreen = ({navigation})=>{
         		</Text>
 
 		</View>
+
+	</View>
+
+		
 	)
 	
 }
@@ -46,7 +57,7 @@ const styles = StyleSheet.create({
 	container: {
 
 		backgroundColor: "white",
-		height: 470
+		flex: 1
 
 	},
 
@@ -60,6 +71,17 @@ const styles = StyleSheet.create({
 		backgroundColor: 'rgba(247, 247, 247)',
 		borderBottomColor: "steelblue",
 		borderBottomWidth: StyleSheet.hairlineWidth
+
+	},
+
+	homeBody: {
+
+		flex: 16,
+
+	},
+	homeFooter: {
+		
+		flex: 1
 	}
 
 })

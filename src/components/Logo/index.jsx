@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 const img = require('../../img/logo.png');
 
@@ -14,5 +14,7 @@ const styles = StyleSheet.create({
 })
 
 export const Logo = () => (
-    <Image source={img} style={styles.logo}/>
+    // <View style={styles.logo}>
+        <Image source={img} style={styles.logo} />
+    // </View>
 )
