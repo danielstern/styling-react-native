@@ -11,6 +11,8 @@ export const HomeScreen = ({navigation})=>{
     return (
         <View style={styles.container}>
 
+			<View style={styles.homebody}>
+
 				  <ScrollView>
 
                 	<SectionList
@@ -29,12 +31,18 @@ export const HomeScreen = ({navigation})=>{
 						)}/>
 
             	</ScrollView>
+
+			</View>
       
+			<View style={styles.homefooter}>
+
 				<Text>
 
               		(C)2020 Globoticket
 
         		</Text>
+
+			</View>
 
 		</View>
 	)
@@ -46,7 +54,18 @@ const styles = StyleSheet.create({
 	container: {
 
 		backgroundColor: "white",
-		height: 470
+		flex: 1
+		// height: 470
+
+	},
+	homebody:{
+
+		flex: 7
+
+	},
+	homefooter: {
+
+		flex: 1
 
 	},
 
