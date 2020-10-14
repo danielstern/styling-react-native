@@ -5,8 +5,11 @@ const styles = StyleSheet.create({
 
     image: {
 
-        height: 200,
-        width: 280
+        // height: 200,
+        // width: 280
+        height: "32vh",
+        display: "flex",
+        alignItems: "stetch"
 
     },
 
@@ -32,7 +35,7 @@ export const DetailsScreen = ({route})=>{
   
             <Text>
 
-                <Image source={require('./../../img/img-3.jpg')} style={styles.image}/>
+                <Image resizeMode="cover" source={require('./../../img/img-3.jpg')} style={styles.image}/>
                
                 <h1>
 
