@@ -6,34 +6,30 @@ const styles = StyleSheet.create({
 
 	item: {
 
-		// padding: 10,
-		height: 44,
 		borderBottomColor: "lightsteelblue",
-		borderBottomWidth: StyleSheet.hairlineWidth
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		flex: 1,
+		flexDirection: "row"
 	},
 
 	tab: {
 
-		width: 68,
+		flex: 2,
 		backgroundColor: "black",
 		padding: 12,
-		position: "absolute",
-		left: 0
 	},
 
 	tabCenter: {
 		
-		width: 272,
+		flex: 5,
 		padding: 12,
-		position: "absolute",
-		right: 0
 		
 	},
 
 	tabText: {
 
 		color: "white",
-		fontSize: 14,
+		fontSize: "2vh",
 		whiteSpace: "nowrap"
 	}
 
