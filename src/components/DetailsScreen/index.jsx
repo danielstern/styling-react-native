@@ -5,8 +5,6 @@ const styles = StyleSheet.create({
 
     image: {
 
-        // height: 200,
-        // width: 280
         height: "32vh",
         display: "flex",
         alignItems: "stetch"
