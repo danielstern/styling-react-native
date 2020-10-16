@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
 	},
 	homebody:{
 
-		flex: 12
+		flex: 15
 
 	},
 	homefooter: {
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
 		alignSelf: "stretch",
 		// alignContent: "center",
 		justifyContent: "flex-end",
-		borderTopColor: "black",
+		borderTopColor: "white",
 		borderTopWidth: StyleSheet.hairlineWidth,
 		backgroundColor: "whtie"
 
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
 
 		fontSize: "2vh",
 		textAlign: "center",
+		color: "white",
 		marginBottom: "0.5vh"
 
 	},
