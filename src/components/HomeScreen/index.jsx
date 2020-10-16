@@ -36,7 +36,7 @@ export const HomeScreen = ({navigation})=>{
       
 			<View style={styles.homefooter}>
 
-				<Text>
+				<Text style={styles.homefooterText}>
 
               		(C)2020 Globoticket
 
@@ -53,19 +53,33 @@ const styles = StyleSheet.create({
 
 	container: {
 
-		backgroundColor: "white",
+		backgroundColor: "steelblue",
 		flex: 1
 		// height: 470
 
 	},
 	homebody:{
 
-		flex: 7
+		flex: 12
 
 	},
 	homefooter: {
 
-		flex: 1
+		flex: 1,
+		alignSelf: "stretch",
+		// alignContent: "center",
+		justifyContent: "flex-end",
+		borderTopColor: "black",
+		borderTopWidth: StyleSheet.hairlineWidth,
+		backgroundColor: "whtie"
+
+	},
+
+	homefooterText: {
+
+		fontSize: "2vh",
+		textAlign: "center",
+		marginBottom: "0.5vh"
 
 	},
 
@@ -76,7 +90,7 @@ const styles = StyleSheet.create({
 		paddingRight: 10,
 		paddingBottom: 2,
 		fontWeight: "bold",
-		backgroundColor: 'rgba(247, 247, 247)',
+		backgroundColor: 'lightgray',
 		borderBottomColor: "steelblue",
 		borderBottomWidth: StyleSheet.hairlineWidth
 	}

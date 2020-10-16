@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
 		
 		flex: 5,
 		padding: 12,
+		backgroundColor: "white"
 		
 	},
 

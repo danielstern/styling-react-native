@@ -53,6 +53,38 @@ export const defaultState = [
 			name: "The Daring Drummers",
 			date: new Date("May 18 2020")
 		}]
+	},
+	{
+		title: "June",
+		data: [{
+			key: "concert-9",
+			name: "The Quiet Choir",
+			date: new Date("June 1 2020")
+		}, {
+			key: "concert-10",
+			name: "Awesome Euphonium",
+			date: new Date("June 7 2020")
+		}, {
+			key: "concert-11",
+			name: "The Daring Drummers",
+			date: new Date("June 18 2020")
+		}]
+	},
+	{
+		title: "July",
+		data: [{
+			key: "concert-12",
+			name: "The Quiet Choir",
+			date: new Date("July 1 2020")
+		}, {
+			key: "concert-13",
+			name: "Awesome Euphonium",
+			date: new Date("July 7 2020")
+		}, {
+			key: "concert-14",
+			name: "The Daring Drummers",
+			date: new Date("July 18 2020")
+		}]
 	}
 
 ];
