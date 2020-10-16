@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Image, Button, ScrollView, StyleSheet } from 'react-native';
+import { Text, Image, Button, ScrollView, StyleSheet, View } from 'react-native';
 
 const styles = StyleSheet.create({
 
@@ -18,6 +18,23 @@ const styles = StyleSheet.create({
         margin: 20,
         padding: 20
 
+    },
+
+    imageThumb: {
+
+        display: "flex",
+        height: "6vh",
+        width: "7vh"
+
+    },
+
+    imageThumbContainer: {
+
+        display: "flex",
+        marginTop: "2vh",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-around"
     }
 
 })
@@ -27,13 +44,46 @@ export const DetailsScreen = ({route})=>{
 
     const { name, date } = route.params.item;
 
+    const [ img1, img2, img3 ] = [
+
+        require('./../../img/img-1.jpg'),
+        require('./../../img/img-2.jpg'),
+        require('./../../img/img-3.jpg')        
+
+    ];
+
     return (
 
         <ScrollView style={styles.container}>
+
+            <Image resizeMode="cover" source={img3} style={styles.image}/>
+
+            <View style={styles.imageThumbContainer}>
+
+                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+
+            </View>
   
             <Text>
-
-                <Image resizeMode="cover" source={require('./../../img/img-3.jpg')} style={styles.image}/>
                
                 <h1>
 
