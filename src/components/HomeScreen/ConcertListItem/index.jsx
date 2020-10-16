@@ -16,7 +16,9 @@ const styles = StyleSheet.create({
 
 		flex: 2,
 		backgroundColor: "black",
-		padding: 12,
+		justifyContent: "center",
+		alignItems: "center"
+		// padding: 12,
 	},
 
 	tabCenter: {
