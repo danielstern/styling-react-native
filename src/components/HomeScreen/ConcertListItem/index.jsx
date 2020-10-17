@@ -33,6 +33,11 @@ const styles = StyleSheet.create({
 		color: "white",
 		fontSize: "2vh",
 		whiteSpace: "nowrap"
+	},
+
+	tabCenterText: {
+
+		fontSize: "2vh"
 	}
 
 })
@@ -57,7 +62,7 @@ export const ConcertListItem = ({navigation, item}) => {
 
 				<View style={styles.tabCenter}>
 
-					<Text>
+					<Text style={styles.tabCenterText}>
 
 						{item.name}
 
