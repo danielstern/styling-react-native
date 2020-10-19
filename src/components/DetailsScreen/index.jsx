@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, Image, Button, ScrollView, StyleSheet, View } from 'react-native';
+import React, {useState} from 'react';
+import { Text, Image, Button, ScrollView, StyleSheet, View, LayoutAnimation, Platform, UIManager } from 'react-native';
 
 const styles = StyleSheet.create({
 
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
 
         height: "32vh",
         display: "flex",
-        alignItems: "stetch"
+        // alignItems: "stetch"
 
     },
 
@@ -35,14 +35,30 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "space-around"
+    },
+
+    inactive: {
+
+        transform: "scale(0.5)"
+
+    },
+
+    active: {
+
+        transform: "scale(2)"
     }
 
 })
 
+if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 export const DetailsScreen = ({route})=>{
 
     const { name, date } = route.params.item;
+
+    const [activated, setActivated] = useState(false);
 
     const [ img1, img2, img3 ] = [
 
@@ -56,32 +72,37 @@ export const DetailsScreen = ({route})=>{
 
         <ScrollView style={styles.container}>
 
-            <Image resizeMode="cover" source={img3} style={styles.image}/>
-
-            <View style={styles.imageThumbContainer}>
-
-                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
-
-                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
-
-                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
-
-                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
-
-                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+            <Image source={img3} style={styles.image} />
 
 
-            </View>
+                {/* <View style={styles.imageThumbContainer}>
+
+                    <Image source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                    <Image source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                    <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                    <Image source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                    <Image source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                    <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                    <Image source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                    <Image source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                    <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                    <Image source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                    <Image source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                    <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                    <Image source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                    <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
+                    <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+
+                </View> */}
+
+            
+
+            
   
             <Text>
                
@@ -90,6 +111,9 @@ export const DetailsScreen = ({route})=>{
                     {name}
 
                 </h1>
+
+            </Text>
+            <Text style={activated ? styles.active : styles.inactive}>
                 <h2>
 
                     {date.toLocaleDateString("en-us", {day: "numeric", weekday: "long", month: "long", year:"numeric"})}
@@ -105,7 +129,20 @@ export const DetailsScreen = ({route})=>{
 
             </Text>
 
-            <Button title="Purchase Tickets" onPress={()=>{}}></Button>
+            <Button title="Purchase Tickets" onPress={()=>{
+
+                console.info("BOOP");
+                LayoutAnimation.configureNext(
+                    // LayoutAnimation.Presets.spring,
+                    LayoutAnimation.create(
+                        2500,
+                        LayoutAnimation.Types.spring,
+                        LayoutAnimation.Properties.scaleXY
+                      )
+                );
+                setActivated(true);
+
+            }}></Button>
 
         </ScrollView>
     )
