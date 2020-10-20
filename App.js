@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   animated: {
     // left: 200,
     // transform: ["translate(250px)"],
-    width: 100,
+    // width: 100,
     backgroundColor: "pink",
     // transition: "width 5s",
     // animation: "1s bounch"
@@ -48,30 +48,50 @@ const styles = StyleSheet.create({
 
 function DemoScreen () {
 
-  const [ animated, setAnimated ] = useState();
+  // const [ animated, setAnimated ] = useState();
 
-  const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
+  // const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
+  const widthAnim = useRef(new Animated.Value(100)).current  // Initial value for opacity: 0
 
-  React.useEffect(() => {
-    Animated.timing(
-      fadeAnim,
-      {
-        fromValue: 0,
-        toValue: 1,
-        duration: 10000,
-      }
-    ).start();
-  }, [fadeAnim])
+  // const animateIn = () => {
+
+  //   React.useEffect(() => {
+  //     Animated.timing(
+  //       widthAnim,
+  //       {
+  //         toValue: 50,
+  //         duration: 1000,
+  //       }
+  //     ).start();
+  //   }, [widthAnim])
+
+  // }
+
+  
 
   // it doesn't matter what you do to the code
   // the application just don't work
 
   return (
     <View>
-      <Animated.View key={1} style={[styles.animateMe, animated ? styles.animated : null, {opacity: fadeAnim}]} />
-      <Animated.View key={2} style={[styles.animateMe,styles.animated]} />
-      <Animated.View>
+      <Animated.View key={1} style={[styles.animateMe, {width: widthAnim}]} />
+      <View>
         <Button onPress={()=>{
+
+// animateIn();
+
+          // animateIn();
+
+          Animated.timing(
+            widthAnim,
+            {
+              toValue: 150,
+              duration: 1000,
+            }
+          ).start();
+          // widthAnim.start()
+
+       
 
           // LayoutAnimation.configureNext(
           //   LayoutAnimation.create({
@@ -97,11 +117,11 @@ function DemoScreen () {
           //     LayoutAnimation.Properties.backgroundColor
           //   )
           // );
-          setAnimated(true);
+          // setAnimated(true);
         }} title="Animation!!">
           Animation 
         </Button>
-      </Animated.View>
+      </View>
     </View>
   )
 
