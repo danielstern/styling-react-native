@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 
 import { createStackNavigator } from '@react-navigation/stack'
 import { HomeScreen } from './src/components/HomeScreen';
 import { DetailsScreen } from './src/components/DetailsScreen';
 import { Logo } from './src/components/Logo';
-import { StyleSheet, View, Button, Text, LayoutAnimation, UIManager } from 'react-native';
+import { StyleSheet, View, Button, Text, LayoutAnimation, UIManager, Animated } from 'react-native';
 
 
 UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -25,18 +25,24 @@ const styles = StyleSheet.create({
 
   },
   animateMe: {
-    position: "absolute",
-    left: 20,
+    // position: "absolute",
+    
+    // transform: translate(0, 0),
+    // left: 20,
+    // transform: ["translate(50px)"],
     width: 200,
     height: 200,
     backgroundColor: "sandybrown",
-    transition: "left 1s"
+    // transition: "width 5s ease-in"
   },
   animated: {
-    left: 200,
+    // left: 200,
+    // transform: ["translate(250px)"],
     width: 100,
     backgroundColor: "pink",
-    transition: "left 1s"
+    // transition: "width 5s",
+    // animation: "1s bounch"
+    
   }
 })
 
@@ -44,13 +50,27 @@ function DemoScreen () {
 
   const [ animated, setAnimated ] = useState();
 
+  const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
+
+  React.useEffect(() => {
+    Animated.timing(
+      fadeAnim,
+      {
+        fromValue: 0,
+        toValue: 1,
+        duration: 10000,
+      }
+    ).start();
+  }, [fadeAnim])
+
   // it doesn't matter what you do to the code
   // the application just don't work
 
   return (
     <View>
-      <View style={[styles.animateMe, animated ? styles.animated : null]} />
-      <View>
+      <Animated.View key={1} style={[styles.animateMe, animated ? styles.animated : null, {opacity: fadeAnim}]} />
+      <Animated.View key={2} style={[styles.animateMe,styles.animated]} />
+      <Animated.View>
         <Button onPress={()=>{
 
           // LayoutAnimation.configureNext(
@@ -81,7 +101,7 @@ function DemoScreen () {
         }} title="Animation!!">
           Animation 
         </Button>
-      </View>
+      </Animated.View>
     </View>
   )
 
