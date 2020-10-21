@@ -35,6 +35,26 @@ const styles = StyleSheet.create({
     backgroundColor: "sandybrown",
     // transition: "width 5s ease-in"
   },
+
+  animateMe2: {
+    // position: "absolute",
+    
+    // transform: translate(0, 0),
+    // left: 20,
+    // transform: ["translate(50px)"],
+    width: 200,
+    height: 200,
+    margin: 20,
+    backgroundColor: "indianred",
+    // transition: "width 5s ease-in"
+  },
+
+  moveRight: {
+
+    alignSelf:"flex-end"
+
+  },
+
   animated: {
     // left: 200,
     // transform: ["translate(250px)"],
@@ -48,7 +68,7 @@ const styles = StyleSheet.create({
 
 function DemoScreen () {
 
-  // const [ animated, setAnimated ] = useState();
+  const [ animated, setAnimated ] = useState();
 
   // const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
   const widthAnim = useRef(new Animated.Value(100)).current  // Initial value for opacity: 0
@@ -75,6 +95,13 @@ function DemoScreen () {
   return (
     <View>
       <Animated.View key={1} style={[styles.animateMe, {width: widthAnim}]} />
+      <Animated.View key={2} style={[styles.animateMe2, animated ? styles.moveRight : null]} />
+
+      {animated && (
+
+        <View key={3} style={[styles.animateMe2, styles.animated]} />
+
+      )}
       <View>
         <Button onPress={()=>{
 
@@ -93,16 +120,27 @@ function DemoScreen () {
 
        
 
-          // LayoutAnimation.configureNext(
-          //   LayoutAnimation.create({
-          //     duration: 2500,
-          //     update: {
-          //       // property: LayoutAnimation.Properties.left,
-          //       property: LayoutAnimation.Properties.backgroundColor,
-          //       type: LayoutAnimation.Types.linear
-          //     }
-          //   })
-          // )
+          LayoutAnimation.configureNext(
+
+            LayoutAnimation.create(
+              500,
+              LayoutAnimation.Types.spring,
+              LayoutAnimation.Properties.scaleXY
+            )
+            // LayoutAnimation.create({
+            //   duration: 5500,
+            //   update: {
+            //     // property: LayoutAnimation.Properties.left,
+            //     property: LayoutAnimation.Properties.backgroundColor,
+            //     type: LayoutAnimation.Types.linear
+            //   },
+            //   create: {
+            //     property: LayoutAnimation.Properties.backgroundColor,
+            //     type: LayoutAnimation.Types.linear
+            //   }
+            // }
+            // )
+          );
 
             // LayoutAnimation.configureNext(
             //   LayoutAnimation.Presets.linear
@@ -117,7 +155,7 @@ function DemoScreen () {
           //     LayoutAnimation.Properties.backgroundColor
           //   )
           // );
-          // setAnimated(true);
+          setAnimated(true);
         }} title="Animation!!">
           Animation 
         </Button>
