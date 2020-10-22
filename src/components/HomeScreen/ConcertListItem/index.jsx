@@ -46,7 +46,12 @@ export const ConcertListItem = ({navigation, item}) => {
     
     return (
 
-      <TouchableHighlight onPress={()=> navigation.navigate("Details", {item})}>
+      <TouchableHighlight onPress={()=> {
+
+		  console.log("navigating...");
+		  navigation.navigate("Details", {item})
+		  
+	  }}>
 
 			<View style={styles.item}>
 
