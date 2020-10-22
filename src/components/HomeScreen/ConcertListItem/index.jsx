@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useRef} from 'react';
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Animated } from 'react-native';
 
 const styles = StyleSheet.create({
 
@@ -43,31 +43,62 @@ const styles = StyleSheet.create({
 })
 
 export const ConcertListItem = ({navigation, item}) => {
+
+	const flexAnim = useRef(new Animated.Value(2)).current;
+	const fontSizeAnim = useRef(new Animated.Value(1)).current;
+
+	console.log(fontSizeAnim.current);
     
     return (
 
       <TouchableHighlight onPress={()=> {
 
 		  console.log("navigating...");
-		  navigation.navigate("Details", {item})
-		  
+
+		  Animated.timing(
+			  fontSizeAnim,
+			  {
+				  toValue:2,
+				  duration: 500
+			  }
+		  )
+
+		  Animated.timing(
+            flexAnim,
+            {
+              toValue: 0,
+              duration: 750,
+            }
+          ).start(() => {
+
+			  navigation.navigate("Details", {item});
+			  flexAnim.setValue(2);
+
+		  });
+		
+
 	  }}>
 
 			<View style={styles.item}>
 
-				<View style={styles.tab}>
+				<Animated.View style={[styles.tab, {flex:flexAnim}]}>
 				
-					<Text style={styles.tabText}>
+					<Text style={[styles.tabText]}>
 
 						{item.date.toLocaleDateString("en-us", {day: "2-digit", month:"short"})}
 
 					</Text>
 
-				</View>
+				</Animated.View>
 
 				<View style={styles.tabCenter}>
 
-					<Text style={styles.tabCenterText}>
+					<Text style={[styles.tabCenterText]}>
+
+					{/* <Text style={[styles.tabCenterText, {fontSize:fontSizeAnim.interpolate({
+						inputRange:[1,2],
+						outputRange:['2vh','4vh']
+					})}]}> */}
 
 						{item.name}
 
