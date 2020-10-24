@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
 
         height: "32vh",
         display: "flex",
-        alignItems: "stetch"
 
     },
 

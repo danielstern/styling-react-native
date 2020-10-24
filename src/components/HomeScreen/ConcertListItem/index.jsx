@@ -42,44 +42,81 @@ const styles = StyleSheet.create({
 
 })
 
-export const ConcertListItem = ({navigation, item}) => {
+export const ConcertListItem = ({navigation, item, handleInteraction}) => {
 
 	const flexAnim = useRef(new Animated.Value(2)).current;
-	const fontSizeAnim = useRef(new Animated.Value(1)).current;
+	// const opacityAnim = useRef(new Animated.Value(1)).current;
+	// const fontSizeAnim = useRef(new Animated.Value(1)).current;
 
-	console.log(fontSizeAnim.current);
+	// console.log(fontSizeAnim.current);
     
     return (
 
       <TouchableHighlight onPress={()=> {
 
-		  console.log("navigating...");
+		//   console.log("navigating...");
 
-		  Animated.timing(
-			  fontSizeAnim,
-			  {
-				  toValue:2,
-				  duration: 500
-			  }
-		  )
+		//   Animated.timing(
+		// 	  fontSizeAnim,
+		// 	  {
+		// 		  toValue:2,
+		// 		  duration: 500
+		// 	  }
+		//   )
 
-		  Animated.timing(
-            flexAnim,
-            {
-              toValue: 0,
-              duration: 750,
-            }
-          ).start(() => {
+		
 
-			  navigation.navigate("Details", {item});
-			  flexAnim.setValue(2);
+		Animated.stagger(
+			500,
+			[
+				Animated.timing(
+           			flexAnim,
+					{
+              			toValue: 0,
+              			duration: 750,
+            		}
+				),
+				// Animated.timing(
+				// 	opacityAnim,
+				// 	{
+				// 		toValue: 0,
+				// 		duration: 500
+				// 	}
+				// )
+				  
+			]
+		).start(()=>{
 
-		  });
+			handleInteraction();
+			
+		});
+
+		// )
+		// Animated.timing(
+        //     flexAnim,
+        //     {
+        //       toValue: 0,
+        //       duration: 750,
+        //     }
+        //   ).start
+
+		//   Animated.timing(
+        //     flexAnim,
+        //     {
+        //       toValue: 0,
+        //       duration: 750,
+        //     }
+        //   ).start(() => {
+
+		// 	  navigation.navigate("Details", {item});
+		// 	  flexAnim.setValue(2);
+
+		//   });
 		
 
 	  }}>
 
-			<View style={styles.item}>
+			<Animated.View style={[styles.item, {opacity: 1}]}>
 
 				<Animated.View style={[styles.tab, {flex:flexAnim}]}>
 				
@@ -106,7 +143,7 @@ export const ConcertListItem = ({navigation, item}) => {
 
 				</View>
 			
-			</View>
+			</Animated.View>
 
 		</TouchableHighlight>
 
