@@ -5,22 +5,19 @@ import { Text, View, SectionList, StyleSheet, Animated } from 'react-native';
 import { defaultState } from '../../config';
 import { ConcertListItem } from './ConcertListItem';
 
-console.log(defaultState);
 export const HomeScreen = ({navigation})=>{
 
-	const opacityAnim = useRef(new Animated.Value(1)).current;
-	// const staggerAnimations = new Array(20).map((v,i)=>{
-	const staggerAnimations = [0,1,2,3].map((v,i)=>{
+	const staggerAnimations = new Array(20)
+		.fill(null)
+		.map((v,i)=>{
 		
-		return (new Animated.Value(1));
-		// return 1;
-		// return (new Animated.Value(1));
+			return useRef(new Animated.Value(1)).current;
 
-	});
+		});
 
-	console.log(staggerAnimations);
+	let k = 0;
 
-    return (
+	return (
         <View style={styles.container}>
 
 			<View style={styles.homebody}>
@@ -31,57 +28,38 @@ export const HomeScreen = ({navigation})=>{
 	                    sections={defaultState} 
 						renderItem={({item, i}) => (
 
-							<Animated.View style={[{opacity:staggerAnimations[i % staggerAnimations.length]}]}>
+							<Animated.View style={[{opacity:staggerAnimations[k++ % staggerAnimations.length]}]}>
 
-								<ConcertListItem item={item} navigation={navigation} handleInteraction={()=>{
+								<ConcertListItem item={item} navigation={navigation} handleInteraction={(initialAnimation)=>{
 
-									// Animated.timing(
-									// 	opacityAnim,
-									// 	// staggerAnimations[i],
-									// 	{
-									// 		toValue: 0,
-									// 		duration: 500
-									// 	}
-										
-									// ).start(()=>{
-
-									// 	navigation.navigate("Details", {item});
-
-									// });
+									console.log("Handling interaction..", initialAnimation);
 
 									Animated.stagger(
-										300,
-										[
-											...staggerAnimations.map(animation => (
-												Animated.timing(
-													// staggerAnimations[0],
-													animation,
-													{
-														toValue: 0,
-														duration: 500
-													}
-												)
-											))
-											// staggerAnimations.map(animation => (
-											// 	Animated.timing(
-											// 		animation,
-											// 		{
-											// 			toValue: 0,
-											// 			duration: 500
-											// 		}
-											// 	)
-											// ))
-										]
-										// staggerAnimations[staggerAnimations.length % i],
-										// staggerAnimations[i],
-										// {
-										// 	toValue: 0,
-										// 	duration: 250
-										// }
-										
+										50,
+									    staggerAnimations.map(animation => (
+
+											Animated.timing(
+
+												animation,
+												{
+													toValue: 0,
+													duration: 300
+												}
+											)
+
+										))
+																			
 									).start(()=>{
 
-										navigation.navigate("Details", {item});
+										navigation.navigate("Details", {item});			
+
+										for (let animation of staggerAnimations) {
+
+											animation.setValue(1);
+
+										}
+
+										initialAnimation.setValue(2);
 
 									});
 
@@ -92,9 +70,13 @@ export const HomeScreen = ({navigation})=>{
 						)}
                   		renderSectionHeader={({section}) => (
 
-                      		<Text style={styles.sectionHeader}>
-                        		{section.title}
-                      		</Text>
+							<Animated.View style={[styles.sectionHeader, {opacity:staggerAnimations[k % staggerAnimations.length]}]}>
+
+                      			<Text>
+                        			{section.title}
+                      			</Text>
+
+							</Animated.View>
 
 						)}/>
 
