@@ -7,17 +7,52 @@ import { ConcertListItem } from './ConcertListItem';
 
 export const HomeScreen = ({navigation})=>{
 
+	let k = 0;
+
 	const staggerAnimations = new Array(20)
 		.fill(null)
-		.map((v,i)=>{
+		.map(()=>{
 		
 			return useRef(new Animated.Value(1)).current;
 
+		});	
+
+	function handleListItemInteraction(item, initialAnimation){
+
+		Animated.stagger(
+			50,
+			staggerAnimations.map(animation => (
+
+				Animated.timing(
+
+					animation,
+					{
+						toValue: 0,
+						duration: 300
+					}
+
+				)
+
+			))
+												
+		).start(()=>{
+
+			navigation.navigate("Details", {item});			
+
+			for (let animation of staggerAnimations) {
+
+				animation.setValue(1);
+
+			}
+
+			initialAnimation.setValue(2);
+
 		});
 
-	let k = 0;
+	}
 
 	return (
+		
         <View style={styles.container}>
 
 			<View style={styles.homebody}>
@@ -30,40 +65,7 @@ export const HomeScreen = ({navigation})=>{
 
 							<Animated.View style={[{opacity:staggerAnimations[k++ % staggerAnimations.length]}]}>
 
-								<ConcertListItem item={item} navigation={navigation} handleInteraction={(initialAnimation)=>{
-
-									console.log("Handling interaction..", initialAnimation);
-
-									Animated.stagger(
-										50,
-									    staggerAnimations.map(animation => (
-
-											Animated.timing(
-
-												animation,
-												{
-													toValue: 0,
-													duration: 300
-												}
-											)
-
-										))
-																			
-									).start(()=>{
-
-										navigation.navigate("Details", {item});			
-
-										for (let animation of staggerAnimations) {
-
-											animation.setValue(1);
-
-										}
-
-										initialAnimation.setValue(2);
-
-									});
-
-								}}/>
+								<ConcertListItem item={item} navigation={navigation} handleInteraction={handleListItemInteraction}/>
 
 							</Animated.View> 
 						
@@ -138,7 +140,6 @@ const styles = StyleSheet.create({
 		paddingLeft: 10,
 		paddingRight: 10,
 		paddingBottom: 2,
-		fontWeight: "bold",
 		backgroundColor: 'rgba(247, 247, 247)',
 		borderBottomColor: "steelblue",
 		borderBottomWidth: StyleSheet.hairlineWidth,

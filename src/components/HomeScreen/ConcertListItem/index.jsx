@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "black",
 		justifyContent: "center",
 		alignItems: "center"
-		// padding: 12,
+
 	},
 
 	tabCenter: {
@@ -42,21 +42,23 @@ const styles = StyleSheet.create({
 
 })
 
-export const ConcertListItem = ({navigation, item, handleInteraction}) => {
+export const ConcertListItem = ({item, handleInteraction}) => {
 
 	const flexWidthAnimation = useRef(new Animated.Value(2)).current;
 
 	function handleComponentPress(){
 
 		Animated.timing(
+
 			flexWidthAnimation,
 			{
 				  toValue: 0,
 				  duration: 750,
 			}
+
 		).start(()=>{
 
-			handleInteraction(flexWidthAnimation);
+			handleInteraction(item, flexWidthAnimation);
 	
 		});		
 
