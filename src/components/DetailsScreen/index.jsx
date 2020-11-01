@@ -1,7 +1,43 @@
 import React from 'react';
+import { Text, Image, Button, ScrollView, StyleSheet, View } from 'react-native';
 
-import { StyleSheet, Text, Image, Button, ScrollView } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native'
+const styles = StyleSheet.create({
+
+    image: {
+
+        height: "32vh",
+        display: "flex",
+
+    },
+
+    container: {
+
+        backgroundColor: "white",
+        height: 480,
+        margin: 20,
+        padding: 20
+
+    },
+
+    imageThumb: {
+
+        display: "flex",
+        height: "6vh",
+        width: "7vh"
+
+    },
+
+    imageThumbContainer: {
+
+        display: "flex",
+        marginTop: "2vh",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-around"
+    }
+
+})
+
 
 
 
@@ -9,11 +45,13 @@ export const DetailsScreen = ({route})=>{
 
     const { name, date } = route.params.item;
 
-    useFocusEffect(() => {
+    const [ img1, img2, img3 ] = [
 
-        console.log("Details screen focused");
-          
-    });
+        require('./../../img/img-1.jpg'),
+        require('./../../img/img-2.jpg'),
+        require('./../../img/img-3.jpg')        
+
+    ];
 
     // console.log(a.b);
 
@@ -22,12 +60,37 @@ export const DetailsScreen = ({route})=>{
 
     return (
 
-        <ScrollView style={stylesFlex.container}>
+        <ScrollView style={styles.container}>
+
+            <Image resizeMode="cover" source={img3} style={styles.image}/>
+
+            <View style={styles.imageThumbContainer}>
+
+                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+
+
+            </View>
   
             <Text>
-
-                <Image source={require('./../../img/img-3.jpg')} style={stylesFlex.image}/>
-                
+               
                 <h1>
 
                     {name}
@@ -54,36 +117,3 @@ export const DetailsScreen = ({route})=>{
     )
 
 }
-
-  
-const stylesFlex = StyleSheet.create({
-
-    header: {
-
-        // marginBottom: 10
-
-    },
-    image: {
-
-        height: 200, 
-        width: "100%"
-
-    },
-    container: {
-
-        backgroundColor: "white",
-        height: "100%",
-        margin: 20,
-        padding: 20
-
-    },
-    button: {
-
-        padding: 10, 
-        backgroundColor: "steelblue", fontSize: 18, color: "white", textTransform:"uppercase", borderRadius: 4
-
-    }
-
-
-
-})

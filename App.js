@@ -7,32 +7,49 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { Logo } from './src/components/Logo';
 import { HomeScreen } from './src/components/HomeScreen';
 import { DetailsScreen } from './src/components/DetailsScreen';
+import { Logo } from './src/components/Logo';
+import { StyleSheet, View } from 'react-native';
 
-import { TransitionSpecs } from '@react-navigation/stack';
+const styles = StyleSheet.create({
+  appContainer:{
 
-// TODO - animate stack navigation
+    display: "flex",
+    flexDirection: "column",
+    flex: 1
+
+  },
+  logo:{
+
+  },
+  navigator:{
+
+    flex: 1
+
+  }
+})
+
 export default function App() {
 
   	const Stack = createStackNavigator();
   	return (
 
-		<NavigationContainer>
+    <View style={styles.appContainer}>
 
-			<Logo/>
+      <NavigationContainer>
 
-			<Stack.Navigator animationEnabled={"true"} qqq="qqq">
+      <Logo/>
 
-				<Stack.Screen name="Home" component={HomeScreen} options={{
-    		transitionSpec: {
-      		open: TransitionSpecs.TransitionIOSSpec,
-      		close: TransitionSpecs.TransitionIOSSpec,
-    	}}}/>
-				<Stack.Screen name="Details" component={DetailsScreen}/ >
+      <Stack.Navigator style={styles.navigator}>
 
-			</Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Details" component={DetailsScreen}/ >
+
+      </Stack.Navigator>
 
 		</NavigationContainer>
 
-  	);
+    </View>
+
+  );
 
 }

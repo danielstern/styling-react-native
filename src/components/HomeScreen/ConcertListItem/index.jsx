@@ -1,96 +1,99 @@
-import React from 'react';
+import React, { useState, useRef} from 'react';
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import { StyleSheet, Text, View } from 'react-native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { Text, View, StyleSheet, Animated } from 'react-native';
 
-const RenderLikeButton = (progress, dragX)=>{
+const styles = StyleSheet.create({
 
-    const x = progress.interpolate({
-        inputRange: [0, 2],
-        outputRange: [0, 40],
-      });
+	item: {
 
-    //   console.log(x.toJSON(), progress.toJSON())
+		borderBottomColor: "lightsteelblue",
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		flex: 1,
+		flexDirection: "row"
+	},
 
-    console.log(progress.toJSON(), dragX.toJSON());
+	tab: {
 
-    console.log(x.toJSON())
+		flex: 2,
+		backgroundColor: "black",
+		justifyContent: "center",
+		alignItems: "center"
+
+	},
+
+	tabCenter: {
+		
+		flex: 5,
+		padding: 12,
+		
+	},
+
+	tabText: {
+
+		color: "white",
+		fontSize: "2vh",
+		whiteSpace: "nowrap"
+	},
+
+	tabCenterText: {
+
+		fontSize: "2vh"
+	}
+
+})
+
+export const ConcertListItem = ({item, handleInteraction}) => {
+
+	const flexWidthAnimation = useRef(new Animated.Value(2)).current;
+
+	function handleComponentPress(){
+
+		Animated.timing(
+
+			flexWidthAnimation,
+			{
+				  toValue: 0,
+				  duration: 750,
+			}
+
+		).start(()=>{
+
+			handleInteraction(item, flexWidthAnimation);
+	
+		});		
+
+	};
 
     return (
-        <View style={{width: x.toJSON() + 10 + "%"}}>
-            <View style={styles.tab}>
-                <Text style={styles.tabText}>
-                LIKE
-                </Text> 
-            </View> 
-        </View>
-    )
 
-}
-export const ConcertListItem = ({navigation, item}) => {
-    
-    return (
+      <TouchableHighlight onPress={handleComponentPress}>
 
-    // <Swipeable renderRightActions={RenderLikeButton}>
-      
-        <TouchableHighlight  activeOpacity={0.6}underlayColor="#DDDDDD" onPress={()=> navigation.push("Details", {item})}>
+			<Animated.View style={[styles.item, {opacity: 1}]}>
 
-            <View style={styles.item}>
+				<Animated.View style={[styles.tab, {flex:flexWidthAnimation}]}>
+				
+					<Text style={[styles.tabText]}>
 
-                <View style={styles.tab}>
-                    
-                    <Text style={styles.tabText}>
+						{item.date.toLocaleDateString("en-us", {day: "2-digit", month:"short"})}
 
-                        {item.date.toLocaleDateString("en-us", {day: "2-digit", month:"short"})}
+					</Text>
 
-                    </Text>
+				</Animated.View>
 
-                </View>
+				<View style={styles.tabCenter}>
 
-                <View style={styles.tabCenter}>
+					<Text style={[styles.tabCenterText]}>
 
-                    <Text>
+						{item.name}
 
-                        {item.name}
+					</Text>
 
-                    </Text>
-
-                </View>
-                
-			</View>
+				</View>
+			
+			</Animated.View>
 
 		</TouchableHighlight>
 
     )
 
 }
-
-
-const styles = StyleSheet.create({
-    tab:{
-        flex: 1, 
-        backgroundColor: "steelblue", 
-        justifyContent:"center", 
-        alignItems:"center"
-    },
-    tabText: {
-        color: "white", 
-        fontSize: 14, 
-        whiteSpace: "nowrap"
-    },
-    tabCenter: {
-        flex: 4, 
-        justifyContent:"center", 
-        alignItems:"center",
-    },
-    item: {
-        padding: 10,
-        height: 44,
-        alignSelf: 'stretch',
-        flex: 1,
-        flexDirection: 'row',
-        padding: 0,
-        borderBottomColor: "lightgray",
-        borderBottomWidth: StyleSheet.hairlineWidth
-    }
-});

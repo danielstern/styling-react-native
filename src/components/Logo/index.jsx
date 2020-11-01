@@ -1,23 +1,18 @@
 import React from 'react';
-import { StyleSheet, Image, Dimensions } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
-export const Logo = () => (
+const img = require('../../img/logo.png');
 
-    <Image source={require('../../img/logo.png')} style={getLogoStyle()} resizeMode="contain"/>
+const styles = StyleSheet.create({
 
-)
-
-const getLogoStyle = () => {
-
-    const { height } = Dimensions.get('window');
-
-    return {
-  
-        height: height / 6,
-        alignSelf: "stretch", 
-        borderBottomColor: "lightgray",
+    logo: {
+        height: "16vh",
+        borderBottomColor: "darksteelblue",
         borderBottomWidth: StyleSheet.hairlineWidth
-  
     }
 
-}
+})
+
+export const Logo = () => (
+    <Image source={img} style={styles.logo} resizeMode="contain"/>
+)
