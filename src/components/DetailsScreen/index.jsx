@@ -53,10 +53,6 @@ export const DetailsScreen = ({route})=>{
 
     ];
 
-    // console.log(a.b);
-
-    //  Problem... for some reason stlyeSheet.create just does not work sometimes
-    // Solution.... style created by "stylesheet.create" only works with components importeted from React native... not regular div tags!
 
     return (
 
@@ -66,25 +62,25 @@ export const DetailsScreen = ({route})=>{
 
             <View style={styles.imageThumbContainer}>
 
-                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
 
-                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
 
-                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
 
-                <Image resizeMode="cover" source={img1} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img1} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
 
-                <Image resizeMode="cover" source={img2} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
-                <Image resizeMode="cover" source={img3} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img2} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
+                <Image source={img3} style={styles.imageThumb} resizeMode="contain"/>
 
 
             </View>

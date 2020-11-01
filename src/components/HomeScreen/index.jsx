@@ -5,6 +5,59 @@ import { Text, View, SectionList, StyleSheet, Animated } from 'react-native';
 import { defaultState } from '../../config';
 import { ConcertListItem } from './ConcertListItem';
 
+
+const styles = StyleSheet.create({
+
+	container: {
+
+		backgroundColor: "white",
+		flex: 1
+
+	},
+	homebody:{
+
+		flex: 15
+
+	},
+	homefooterText:{
+
+		fontSize: "2vh",
+		textAlign: "center",
+		color: "white",
+		marginBottom: "0.5vh"
+
+	},
+	homefooter: {
+
+		flex: 1,
+		alignSelf: "stretch",
+		justifyContent: "flex-end",
+		borderTopColor: "gray",
+		borderTopWidth: StyleSheet.hairlineWidth,
+		backgroundColor: "steelblue"
+
+	},
+
+	sectionHeader: {
+
+		paddingTop: 2,
+		paddingLeft: 10,
+		paddingRight: 10,
+		paddingBottom: 2,
+		backgroundColor: 'rgba(247, 247, 247)',
+		borderBottomColor: "steelblue",
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		
+	},
+
+	sectionHeaderText: {
+
+		fontSize: "2.5vh"
+
+	}
+
+})
+
 export const HomeScreen = ({navigation})=>{
 
 	let k = 0;
@@ -74,7 +127,7 @@ export const HomeScreen = ({navigation})=>{
 
 							<Animated.View style={[styles.sectionHeader, {opacity:staggerAnimations[k % staggerAnimations.length]}]}>
 
-                      			<Text>
+                      			<Text style={styles.sectionHeaderText}>
                         			{section.title}
                       			</Text>
 
@@ -100,50 +153,3 @@ export const HomeScreen = ({navigation})=>{
 	)
 	
 }
-
-const styles = StyleSheet.create({
-
-	container: {
-
-		backgroundColor: "white",
-		flex: 1
-		// height: 470
-
-	},
-	homebody:{
-
-		flex: 15
-
-	},
-	homefooterText:{
-
-		fontSize: "2vh",
-		textAlign: "center",
-		color: "white",
-		marginBottom: "0.5vh"
-
-	},
-	homefooter: {
-
-		flex: 1,
-		alignSelf: "stretch",
-		justifyContent: "flex-end",
-		borderTopColor: "gray",
-		borderTopWidth: StyleSheet.hairlineWidth,
-		backgroundColor: "steelblue"
-
-	},
-
-	sectionHeader: {
-
-		paddingTop: 2,
-		paddingLeft: 10,
-		paddingRight: 10,
-		paddingBottom: 2,
-		backgroundColor: 'rgba(247, 247, 247)',
-		borderBottomColor: "steelblue",
-		borderBottomWidth: StyleSheet.hairlineWidth,
-		fontSize: "2.5vh"
-	}
-
-})

@@ -14,5 +14,7 @@ const styles = StyleSheet.create({
 })
 
 export const Logo = () => (
+
     <Image source={img} style={styles.logo} resizeMode="contain"/>
+    
 )
